@@ -1,9 +1,9 @@
 
-FROM node:22-apline3.18
+FROM node:latest
 
 WORKDIR /client
 
-COPY ./client/
+COPY . /client/
 
 RUN npm install
 
