@@ -1,9 +1,10 @@
 
-FROM node:latest
+FROM node:22.1-alpine3.18
+
 
 WORKDIR /client
 
-COPY ./package*.json ./
+COPY package.json package-lock.json ./
 
 RUN npm install
 
