@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  db:
+    name: mongodb_container
+    image: mongo:latest
+    ports:
+      - 27017:27017
+
+  backend:
+    name: backend-container
+    build: ./backend
+    ports:
+      - 5000:5000
+    depends_on:
+      - db
+
+  client:
+    name: client_container
+    build: ./client
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+      - backend
+
