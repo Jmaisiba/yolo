@@ -1,5 +1,5 @@
 
-FROM node:latest
+FROM node:22.1-alpine3.18s
 
 WORKDIR /backend
 
@@ -11,6 +11,6 @@ COPY . .
 
 EXPOSE 5000
 
-CMD [“npm”, ”start”]
+CMD npm start
 
 	
