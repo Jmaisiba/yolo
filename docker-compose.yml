@@ -1,25 +1,37 @@
 version: "3.8"
 services:
   db:
-    name: mongodb_container
     image: mongo:latest
+    container_name: mongodb_container
     ports:
       - 27017:27017
+    networks:
+      - yolo_network
+  
 
   backend:
-    name: backend-container
     build: ./backend
+    container_name: backend_container
     ports:
       - 5000:5000
     depends_on:
       - db
+    networks:
+      - yolo_network
+      
 
   client:
-    name: client_container
     build: ./client
+    container_name: client_container
     ports:
-      - 3000:3000
+      - 80:80
+    restart: on-failure
     depends_on:
       - db
       - backend
-
+    networks:
+      - yolo_network
+  
+networks:
+  yolo_network:
+    driver: bridge
