@@ -1,0 +1,12 @@
+- hosts: all
+  become: true
+
+  roles:
+    - VM-connection-testing
+    - git-repository-cloning
+    - ubuntu-apt-library-updates
+    - docker-installation-prep
+    - docker-install
+    - docker-environment
+    - docker-compose-installation
+    - docker-compose-deployment
