@@ -1,0 +1,13 @@
+---
+# tasks file for docker-environment
+- name: Starting Docker
+  service:
+    name: docker
+    state: started
+    enabled: true
+
+- name: Add vagrant to docker group
+  user:
+    name: vagrant
+    group: docker
+    append: yes

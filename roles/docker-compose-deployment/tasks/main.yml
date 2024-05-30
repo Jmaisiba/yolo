@@ -1,0 +1,8 @@
+---
+# tasks file for docker-compose-deployment
+- name: Start Docker Compose
+  community.docker.docker_compose:
+    project_src: /home/vagrant/dev05/yolo/
+    files:
+      - "/home/vagrant/dev05/yolo/docker-compose.yml"
+    state: present

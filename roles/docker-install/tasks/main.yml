@@ -1,0 +1,7 @@
+---
+# tasks file for docker-install
+- name: Installing Docker
+  apt: 
+    name: docker-ce
+    state: latest
+    update_cache: true

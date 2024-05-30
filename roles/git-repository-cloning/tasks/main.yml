@@ -1,0 +1,9 @@
+---
+# tasks file for git-repository-cloning
+
+- name: Cloning Git repository
+  git:
+    repo: https://github.com/Jmaisiba/yolo
+    dest: /home/vagrant/dev05/yolo
+    clone: yes
+    update: yes

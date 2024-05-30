@@ -1,0 +1,7 @@
+---
+# tasks file for docker-compose-installation
+- name: Installing Docker Compose
+  apt: 
+    name: docker-compose
+    state: latest
+    update_cache: true

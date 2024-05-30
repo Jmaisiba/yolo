@@ -1,0 +1,5 @@
+---
+# tasks file for VM-connection-testing
+- name: Test Connection
+  ping: 
+

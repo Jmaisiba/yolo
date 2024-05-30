@@ -1,0 +1,6 @@
+---
+# tasks file for ubuntu-apt-library-updates
+- name: Update Ubuntu package libraries
+  become: true
+  apt:
+    update_cache: yes
