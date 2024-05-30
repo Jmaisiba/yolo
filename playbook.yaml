@@ -1,0 +1,74 @@
+- hosts: all
+  become: true
+
+  tasks:
+    - name: Test Connection
+      ping: 
+
+    - name: Cloning Git repository
+      git:
+        repo: https://github.com/Jmaisiba/yolo
+        dest: /home/vagrant/dev05/yolo
+        clone: yes
+        update: yes
+
+    - name: Update Ubuntu package libraries
+      become: true
+      apt:
+        update_cache: yes
+
+    - name: Install packages required to install Docker
+      apt:
+        pkg:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - gnupg
+          - software-properties-common
+        state: latest
+        update_cache: true
+
+    - name: Adding Docker GPG key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add Docker repository
+      apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu jammy stable
+        state: present
+
+    - name: Installing Docker
+      apt: 
+        name: docker-ce
+        state: latest
+        update_cache: true
+
+    - name: Starting Docker
+      service:
+        name: docker
+        state: started
+        enabled: true
+
+    - name: Add vagrant to docker group
+      user:
+        name: vagrant
+        group: docker
+        append: yes
+
+    - name: Installing Docker Compose
+      apt: 
+        name: docker-compose
+        state: latest
+        update_cache: true
+
+    - name: Start Docker Compose
+      docker_compose:
+        project_src: /home/vagrant/dev05/yolo/
+        files:
+          - "/home/vagrant/dev05/yolo/docker-compose.yml"
+        state: present
+
+
+    
+      
