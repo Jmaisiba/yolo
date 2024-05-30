@@ -1,15 +1,27 @@
 
-FROM node:22.1-alpine3.18
+
+FROM node:22.1-alpine3.18 AS builder
 
 WORKDIR /client
 
 COPY ./package*.json ./
 
-RUN npm install
+RUN npm install 
 
 COPY . .
 
-EXPOSE 3000
+RUN npm run build
 
-CMD npm start
+RUN npm prune --production
+
+
+FROM nginx:alpine
+
+WORKDIR /usr/share/nginx/html
+
+COPY --from=builder /client/build .
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
 
