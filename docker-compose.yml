@@ -7,22 +7,28 @@ services:
       - 27017:27017
     networks:
       - yolo_network
+    volumes:
+      - yolo_volumes/data/mongodb
   
 
   backend:
     build: ./backend
     container_name: backend_container
+    image: jmaisiba/yolo_backend_image:v1.0.3
     ports:
       - 5000:5000
     depends_on:
       - db
     networks:
       - yolo_network
+    volumes:
+      - yolo_volumes/data/backend
       
 
   client:
     build: ./client
     container_name: client_container
+    image: jmaisiba/yolo_client_image:v1.1.0
     ports:
       - 80:80
     restart: on-failure
@@ -35,3 +41,7 @@ services:
 networks:
   yolo_network:
     driver: bridge
+
+volumes:
+  yolo_volumes:
+
