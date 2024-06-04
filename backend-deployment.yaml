@@ -1,0 +1,28 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  # replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: jmaisiba/yolo_backend_image:v1.0.3
+        env:
+        - name: MONGO_URI
+          value: mongodb+srv://maisiba:mvmcHNB10@gallery.cwo3c4s.mongodb.net/?retryWrites=true&w=majority
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5000
+
