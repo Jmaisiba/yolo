@@ -14,7 +14,7 @@ services:
   backend:
     build: ./backend
     container_name: backend_container
-    image: jmaisiba/yolo_backend_image:v1.0.3
+    image: jmaisiba/yolo_backend_image:v1.0.4
     ports:
       - 5000:5000
     depends_on:

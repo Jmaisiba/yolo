@@ -1,5 +1,5 @@
 
-FROM node:22.1-alpine3.18
+FROM node:13.12-alpine
 
 WORKDIR /backend
 

@@ -7,7 +7,7 @@ const upload = multer();
 const productRoute = require('./routes/api/productRoute');
 
 // Connecting to the Database
-let mongodb_url = 'mmongodb+srv://maisiba:mvmcHNB10@gallery.cwo3c4s.mongodb.net/';
+let mongodb_url = 'mongodb+srv://maisiba:mvmcHNB10@gallery.cwo3c4s.mongodb.net/?retryWrites=true&w=majority&appName=gallery';
 let dbName = 'gallery';
 
 // define a url to connect to the database
