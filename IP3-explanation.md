@@ -24,6 +24,38 @@ Use `vagrant provision` command to run the provisioning process on an already ru
 `vagrant halt` 
 command is used to shut down Vagrant-managed virtual machines.
 
+- ![Screenshot from 2024-06-05 14-06-31](https://github.com/Jmaisiba/yolo/assets/35705417/4ac9c267-3927-4321-a32d-8b0bce552504)
+
+
+ `vagrant ssh`
+ command is used to SSH into vagrant managed virtual machines
+
+ - ![Screenshot from 2024-06-05 13-52-54](https://github.com/Jmaisiba/yolo/assets/35705417/0aef1e7f-aa94-41c8-8383-8938087410bc)
+
+
+## What you should expect
+### Running vagrant up
+When you run the `vagrant up` command the following output should be expected signalling start of virtual machine
+
+- ![Screenshot from 2024-06-05 13-45-22](https://github.com/Jmaisiba/yolo/assets/35705417/28e7f544-d679-4b36-b049-d73972bc75ea)
+
+### Running vagrant provision
+Running `vagrant provision` carries out tasks/roles assigned in playbook. 
+This is a snippet of final tasks being complete with high verbosity(this can be changed)
+You also get a summarry of tasks carried out and the state
+
+- ![image](https://github.com/Jmaisiba/yolo/assets/35705417/57e99870-ed6a-4bd4-8096-4cfd5e35011e)
+
+
+### Expected outcome
+Ater SSH into the virtual machine using`vagrant ssh` you can run `docker ps` to check the running containers in the virtual machine
+As from the image we can see our tasks carried out by the roles have been satisfied all from the `vagrant provision` command
+
+- ![Screenshot from 2024-06-05 13-56-52](https://github.com/Jmaisiba/yolo/assets/35705417/61e23c07-e59a-4e19-825a-1090e113258c)
+
+
+
+
 ## What makes these Configurations Possible?
 
 ## Vagrant File
